@@ -1,0 +1,38 @@
+name: Content error or correction
+description: Report a mistake, outdated information or a broken example.
+title: "[Correction]: "
+labels: ["content", "correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to improve this material. **Do not report security problems here**; use the private channel described in [SECURITY.md](https://github.com/vitorparras/Secure-Development/blob/main/SECURITY.md).
+  - type: input
+    id: location
+    attributes:
+      label: Where is it?
+      description: File and section, or a permalink to the line.
+      placeholder: "path/to/file.md, section 3"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: Quote the current text or code and explain the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Suggested fix
+      description: What should it say instead? Include references (docs, specs, papers) when possible.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this has not been reported yet.
+          required: true
+        - label: I agree to follow this project's Code of Conduct.
+          required: true

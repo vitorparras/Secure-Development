@@ -1,0 +1,35 @@
+name: Content suggestion
+description: Propose a new topic, example or improvement.
+title: "[Suggestion]: "
+labels: ["content", "enhancement"]
+body:
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like to see?
+      description: Describe the topic, example or improvement and why it is useful.
+    validations:
+      required: true
+  - type: textarea
+    id: outline
+    attributes:
+      label: Outline or draft
+      description: Optional. A rough outline, references or a first draft.
+  - type: dropdown
+    id: help
+    attributes:
+      label: Would you like to work on it?
+      options:
+        - "Yes, I can open a pull request"
+        - "No, just suggesting"
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and discussions and this has not been proposed yet.
+          required: true
+        - label: I agree to follow this project's Code of Conduct.
+          required: true

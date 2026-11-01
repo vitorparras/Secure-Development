@@ -1,0 +1,43 @@
+# Operating systems
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+tempCodeRunnerFile.*
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Compiled artifacts and build output
+*.exe
+*.o
+*.obj
+*.out
+*.dll
+*.so
+*.dylib
+bin/
+obj/
+build/
+dist/
+
+# Logs and temporary files
+*.log
+*.tmp

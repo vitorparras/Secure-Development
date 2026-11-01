@@ -1,92 +1,108 @@
 # Secure Development
 
-A collection of resources, tools, and best practices for secure software development. Includes guidelines for secure coding, vulnerability mitigation, and application security testing. Aimed at improving the security posture of software development projects.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/vitorparras/Secure-Development/badge)](https://scorecard.dev/viewer/?uri=github.com/vitorparras/Secure-Development)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-## Table of Contents
+Guidelines, tools and checklists for building software securely: secure coding,
+vulnerability mitigation, security testing and supply-chain hygiene.
 
-- [Introduction](#introduction)
-- [Folder Structure](#folder-structure)
-- [Guidelines](#guidelines)
-- [Tools](#tools)
-- [Vulnerability Mitigation](#vulnerability-mitigation)
-- [Security Testing](#security-testing)
-- [How to Use](#how-to-use)
+> **Status:** starting. The repository structure and conventions are defined
+> below; material is added over time. Contributions are welcome from day one.
+
+## Table of contents
+
+- [Goal](#goal)
+- [Planned structure](#planned-structure)
+- [Conventions](#conventions)
+- [This repository practices what it documents](#this-repository-practices-what-it-documents)
+- [References](#references)
 - [Contributing](#contributing)
+- [Security](#security)
+- [Code of conduct](#code-of-conduct)
+- [License](#license)
 
-## Introduction
+## Goal
 
-This repository is designed to provide resources and tools to help developers build secure applications. It includes guidelines for secure coding practices, tools for static and dynamic analysis, strategies for mitigating common vulnerabilities, and plans for security testing.
+A practical companion for developers who want to ship secure software without
+becoming full-time security specialists: what to do, why, and how to verify it.
+Everything here should be actionable and backed by a reference.
 
-## Folder Structure
+## Planned structure
 
-The repository is structured as follows:
-
+```text
+Secure-Development/
+├── guidelines/
+│   ├── secure-coding-practices.md     # input validation, output encoding, authn/authz, crypto, errors, logging
+│   ├── secrets-management.md
+│   └── dependency-and-supply-chain.md
+├── vulnerabilities/
+│   ├── owasp-top-10.md                # each category: what it is, example, how to prevent, how to test
+│   └── common-weaknesses.md           # CWE-based catalog with mitigations
+├── tools/
+│   ├── static-analysis/               # CodeQL, Semgrep, SonarCloud configurations
+│   ├── dynamic-analysis/              # OWASP ZAP configurations and scripts
+│   └── dependency-scanning/           # Dependabot, OSV-Scanner, Trivy
+├── testing/
+│   ├── web-application-test-plan.md
+│   └── threat-modeling.md             # STRIDE walkthrough and templates
+├── checklists/
+│   ├── pull-request-security-review.md
+│   └── release-security-checklist.md
+└── README.md
 ```
-    Secure-Development/
-    ├── Guidelines/
-    │   ├── secure_coding_practices.md
-    │   └── README.md
-    ├── Tools/
-    │   ├── static_analysis/
-    │   │   ├── sonarcloud_config.yml
-    │   ├── dynamic_analysis/
-    │   │   ├── zap_config.xml
-    │   └── README.md
-    ├── Vulnerability-Mitigation/
-    │   ├── common_vulnerabilities.md
-    │   └── README.md
-    ├── Security-Testing/
-    │   ├── test_plans/
-    │   │   ├── web_app_test_plan.md
-    │   └── README.md
-    └── README.md
 
-```
+## Conventions
 
-Each folder contains relevant resources for enhancing the security of software development practices.
+- **Every recommendation cites a source** (OWASP, NIST, CWE, vendor
+  documentation) and says which risk it addresses.
+- **Examples show the insecure and the secure version** side by side, clearly
+  labeled. Insecure samples must never be runnable against real systems.
+- **Tool configurations are tested** against a sample project and state the
+  tool version they were written for.
+- **No real secrets, hostnames or personal data** anywhere, including in
+  examples of "what not to do".
 
-## Guidelines
+## This repository practices what it documents
 
-### Secure Coding Practices
-- **secure_coding_practices.md**: A comprehensive guide on secure coding practices to prevent common vulnerabilities and ensure robust application security.
+- `main` is protected: changes land only through pull requests with passing
+  checks; force pushes and deletion are blocked.
+- Secret scanning with push protection, Dependabot alerts and security updates,
+  and private vulnerability reporting are enabled.
+- GitHub Actions are limited to GitHub-owned and verified creators, pinned to
+  commit SHAs, with read-only default permissions.
+- [OpenSSF Scorecard](https://scorecard.dev/viewer/?uri=github.com/vitorparras/Secure-Development)
+  runs weekly and publishes its results.
 
-## Tools
+## References
 
-### Static Analysis
-- **sonarcloud_config.yml**: Configuration file for SonarCloud to perform static code analysis and identify security issues in the codebase.
-
-### Dynamic Analysis
-- **zap_config.xml**: Configuration file for OWASP ZAP to perform dynamic application security testing and identify runtime vulnerabilities.
-
-## Vulnerability Mitigation
-
-### Common Vulnerabilities
-- **common_vulnerabilities.md**: A document outlining common software vulnerabilities and recommended practices for mitigating them.
-
-## Security Testing
-
-### Test Plans
-- **web_app_test_plan.md**: A detailed test plan for performing security assessments on web applications, including test cases and methodologies.
-
-## How to Use
-
-1. Navigate to the relevant folder for the resource you need.
-2. Open the `README.md` file in the folder for an overview and usage instructions.
-3. Use the provided guidelines and tools to enhance your development practices. For example:
-
-### Secure Coding Practices
-Refer to `Guidelines/secure_coding_practices.md` for a detailed guide on secure coding.
-
-### Tools
-- **Static Analysis**: Configure and run SonarCloud using `Tools/static_analysis/sonarcloud_config.yml`.
-- **Dynamic Analysis**: Use OWASP ZAP with `Tools/dynamic_analysis/zap_config.xml` to test your application.
-
-### Vulnerability Mitigation
-Review `Vulnerability-Mitigation/common_vulnerabilities.md` to understand common vulnerabilities and how to address them.
-
-### Security Testing
-Use `Security-Testing/test_plans/web_app_test_plan.md` to structure your security testing efforts.
+- [OWASP Top 10](https://owasp.org/Top10/)
+- [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/)
+- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
+- [OWASP Software Assurance Maturity Model (SAMM)](https://owaspsamm.org/)
+- [CWE Top 25](https://cwe.mitre.org/top25/)
+- [NIST Secure Software Development Framework (SSDF)](https://csrc.nist.gov/projects/ssdf)
+- [OpenSSF Scorecard](https://scorecard.dev) and [SLSA](https://slsa.dev)
 
 ## Contributing
 
-If you would like to contribute to this repository, please fork the repository, create a new branch, make your changes, and submit a pull request. Contributions are welcome and appreciated! Ensure that your contributions include clear documentation and adhere to the project's guidelines.
+New guidelines, tool configurations and corrections are welcome. Please read
+[CONTRIBUTING.md](CONTRIBUTING.md) first and open a
+[suggestion](https://github.com/vitorparras/Secure-Development/issues/new?template=content_suggestion.yml)
+before writing a large document.
+
+## Security
+
+Found content that would lead a reader to an insecure practice, or a problem in
+this repository's configuration? Follow [SECURITY.md](SECURITY.md) and report
+it privately.
+
+## Code of conduct
+
+This project follows the [Contributor Covenant](CODE_OF_CONDUCT.md). By
+participating you agree to uphold it.
+
+## License
+
+Licensed under the [MIT License](LICENSE). Copyright © Vitor Hugo Parras.
